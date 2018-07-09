@@ -1,0 +1,48 @@
+﻿<script src="~/scripts/jquery-3.3.1.min.js"></script>
+<script src="~/scripts/angular.min.js"></script>
+<script src="~/scripts/studentcontroller.js"></script>
+<div ng-app="studentApp" ng-controller="Ctrl" ng-init="init()">
+    <br /><br />
+    <div style="float: right;">
+            <input type="text" ng-model="searchKeyword"/>
+            <input type="submit" ng-click="Search()" value="Search" class="btn btn-default" />
+    </div>
+     <br /><br />
+    <table class="table" style="border:1px solid black;">
+        <thead>
+            <tr>
+                <th>Fname</th>
+                <th>Lname</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="student in students">
+            @*<td><input ng-model="student.Id" id="input" type="number"/></td>*@
+            <td><input ng-model="student.Fname" id="input" type="text" /></td>
+            <td><input ng-model="student.Lname" id="input" type="text" /></td>
+            <td><input ng-model="student.Age" id="input" type="number" /></td>
+            <td><input ng-model="student.Email" id="input" type="email" /></td>
+            @*<td contenteditable="true">{{student.Fname}}</td>
+            <td contenteditable="true">{{student.Lname}}</td>
+            <td contenteditable="true">{{student.Age}}</td>*@
+            <td><a  ng-click="Edit(student)">Save</a></td>
+            <td><a ng-click="Delete(student)">Delete</a></td>ss
+        </tr>
+    </table>
+
+
+</div>
+
+<style>
+ #input {
+    outline:thin; 
+
+}
+ textarea:focus, input:focus{
+    outline: none;
+}
+</style>
+
