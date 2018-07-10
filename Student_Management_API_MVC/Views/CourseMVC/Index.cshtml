@@ -1,0 +1,53 @@
+﻿<script src="~/scripts/jquery-3.3.1.min.js"></script>
+<script src="~/scripts/angular.min.js"></script>
+<script src="~/scripts/Controller/coursecontroller.js"></script>
+<div ng-app="courseApp" ng-controller="Ctrl" ng-init="init()">
+    <br /><br />
+    <div style="float: right;">
+        <input type="text" ng-change="Search()" ng-model="searchKeyword" placeholder="Search" />
+        @*<input type="submit" ng-click="Search()" value="Search" class="btn btn-default" />*@
+    </div>
+
+    <div style="float: right;">
+        <br /><br />
+        <label>Add New Course</label><br /><br />
+        <input ng-model="addCourse.Code" ng-change="change('code')" placeholder="Course Code" type="number" required />&nbsp&nbsp&nbsp
+        <input ng-model="addCourse.Cname" ng-change="change('cname')" placeholder="Course Name" type="text" required />&nbsp&nbsp&nbsp
+        <input ng-click="Add(addCourse)" value="ADD COURSE" class="btn btn-default" type="submit" />&nbsp&nbsp&nbsp
+        <br /><br /><br /><br />
+    </div>
+    
+
+    <table class="table" style="border:1px solid black;">
+        <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="course in courses">
+            @*<td><input ng-model="student.Id" id="input" type="number"/></td>*@
+            <td><input ng-model="course.Code" id="input" type="text" /></td>
+            <td><input ng-model="course.Cname" id="input" type="text" /></td>
+            @*<td contenteditable="true">{{student.Fname}}</td>
+                <td contenteditable="true">{{student.Lname}}</td>
+                <td contenteditable="true">{{student.Age}}</td>*@
+            <td><a ng-click="Edit(course)">Save</a></td>
+            <td><a ng-click="Delete(course)">Delete</a></td>
+        </tr>
+    </table>
+
+
+</div>
+
+<style>
+    #input {
+        outline: thin;
+    }
+
+    textarea:focus, input:focus {
+        outline: none;
+    }
+</style>

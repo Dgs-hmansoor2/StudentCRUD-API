@@ -1,13 +1,26 @@
 ﻿<script src="~/scripts/jquery-3.3.1.min.js"></script>
 <script src="~/scripts/angular.min.js"></script>
-<script src="~/scripts/studentcontroller.js"></script>
+<script src="~/scripts/Controller/studentcontroller.js"></script>
 <div ng-app="studentApp" ng-controller="Ctrl" ng-init="init()">
     <br /><br />
     <div style="float: right;">
-            <input type="text" ng-model="searchKeyword"/>
-            <input type="submit" ng-click="Search()" value="Search" class="btn btn-default" />
+            <input type="text" ng-change="Search()" ng-model="searchKeyword" placeholder="Search"/>
+            @*<input type="submit" ng-click="Search()" value="Search" class="btn btn-default" />*@
     </div>
-     <br /><br />
+
+    <div style="float: right;">
+        <br /><br />
+        <label>Add New Student</label><br /><br />
+        <input ng-model="addStudent.Id" ng-change="change('id')" placeholder="Student Id" type="number" required />&nbsp&nbsp&nbsp
+        <input ng-model="addStudent.Fname" ng-change="change('fname')" placeholder="First Name" type="text" required />&nbsp&nbsp&nbsp
+        <input ng-model="addStudent.Lname" ng-change="change('lname')" placeholder="Last Name" type="text" required />&nbsp&nbsp&nbsp
+        <input ng-model="addStudent.Age" ng-change="change('age')" placeholder="Age" type="number" required />&nbsp&nbsp&nbsp
+        <input ng-model="addStudent.Email" ng-change="change('email')" placeholder="Email" type="email" required />&nbsp&nbsp&nbsp
+        <input  ng-click="Add(addStudent)" value="ADD STUDENT" class="btn btn-default" type="submit" />&nbsp&nbsp&nbsp
+        <br /><br /><br /><br />
+    </div>
+     
+
     <table class="table" style="border:1px solid black;">
         <thead>
             <tr>
@@ -29,7 +42,7 @@
             <td contenteditable="true">{{student.Lname}}</td>
             <td contenteditable="true">{{student.Age}}</td>*@
             <td><a  ng-click="Edit(student)">Save</a></td>
-            <td><a ng-click="Delete(student)">Delete</a></td>ss
+            <td><a ng-click="Delete(student)">Delete</a></td>
         </tr>
     </table>
 

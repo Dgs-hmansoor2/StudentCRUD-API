@@ -14,10 +14,5 @@ namespace Student_Management_API_MVC.Controllers
             return View();
         }
 
-        public ActionResult Edit()
-        {
-            return View();
-        }
-
     }
 }

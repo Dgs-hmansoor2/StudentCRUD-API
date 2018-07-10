@@ -1,0 +1,62 @@
+﻿<script src="~/scripts/jquery-3.3.1.min.js"></script>
+<script src="~/scripts/angular.min.js"></script>
+<script src="~/scripts/Controller/studentcoursecontroller.js"></script>
+<div ng-app="studentcourseApp" ng-controller="Ctrl" ng-init="init()">
+    <br /><br />
+    <div style="float: right;">
+        <input type="text" ng-change="Search()" ng-model="searchKeyword" placeholder="Search" />
+        @*<input type="submit" ng-click="Search()" value="Search" class="btn btn-default" />*@
+    </div>
+
+    <div style="float: right;">
+        <br /><br />
+        <label>Enroll Student In a Course</label><br /><br />
+        <select ng-model="addCourse" ng-options="course.Code for course in courses"></select>
+        <select ng-model="addStudent" ng-options="student.Id for student in students"></select>
+        <input ng-model="addGrade" ng-change="change('grade')" placeholder="Grade" type="text" required />&nbsp&nbsp&nbsp
+
+        @*<input ng-model="addStudent.Id" ng-change="change('id')" placeholder="Student Id" type="number" required />&nbsp&nbsp&nbsp
+        <input ng-model="addStudent.Fname" ng-change="change('fname')" placeholder="First Name" type="text" required />&nbsp&nbsp&nbsp
+        <input ng-model="addStudent.Lname" ng-change="change('lname')" placeholder="Last Name" type="text" required />&nbsp&nbsp&nbsp
+        <input ng-model="addStudent.Age" ng-change="change('age')" placeholder="Age" type="number" required />&nbsp&nbsp&nbsp
+        <input ng-model="addStudent.Email" ng-change="change('email')" placeholder="Email" type="email" required />&nbsp&nbsp&nbsp*@
+        <input ng-click="Add()" value="ENROLL STUDENT" class="btn btn-default" type="submit" />&nbsp&nbsp&nbsp
+        <br /><br /><br /><br />
+    </div>
+
+
+    <table class="table" style="border:1px solid black;">
+        <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Student Id</th>
+                <th>Grade</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="studentcourse in studentcourses">
+            @*<td><input ng-model="student.Id" id="input" type="number"/></td>*@
+            <td><input ng-model="studentcourse.CourseCode" " id="input" type="number" /></td>
+            <td><input ng-model="studentcourse.StudentId" id="input" type="number" /></td>
+            <td><input ng-model="studentcourse.Grade" id="input" type="text" /></td>
+            @*<td contenteditable="true">{{student.Fname}}</td>
+                <td contenteditable="true">{{student.Lname}}</td>
+                <td contenteditable="true">{{student.Age}}</td>*@
+            <td><a ng-click="Edit(studentcourse)">Save</a></td>
+            <td><a ng-click="Delete(studentcourse)">Delete</a></td>
+        </tr>
+    </table>
+
+
+</div>
+
+<style>
+    #input {
+        outline: thin;
+    }
+
+    textarea:focus, input:focus {
+        outline: none;
+    }
+</style>
